@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: lightgrey;
+  }
+
+header {
+    background-color: lightblue;
+    margin: 0 auto;
+    height: 50px;
+    text-align: center;
+    font-size: larger;
+  }
