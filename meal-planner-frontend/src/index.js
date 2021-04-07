@@ -26,19 +26,50 @@ function getCategories(){
             let h2 = document.createElement("h2");
             h2.innerText = `${cat.attributes.name}`;
 
-            square.append(h2)
-            main.appendChild(square)
+            let button = document.createElement("button");
+            button.innerText = "View this category";
+            button.setAttribute("data-category-id", `${cat.id}`);
+            button.addEventListener("click", (event) => getMealsInCategory(event));
+
+            square.append(h2, button);
+            main.appendChild(square);
         })
     })
 }
 
-function getMeals(){
+function getMealsInCategory(event){
+    let id = event.target.getAttribute("data-category-id");
+    let h3 = event.target.nextElementSibling;
+    let ul = document.createElement("ul")
+    let li = document.createElement("li");
+    let addData = function addData(data){
+        ul.innerText = `${data.attributes.name}`;
+        li.innerText = `${data.attributes.ingredients}`;
+        ul.appendChild(li)
+        h3.appendChild(ul)
+    }
+
+    fetch(mealsIndex, {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json",
+            "Accept" : "application/json"
+        },
+        body: JSON.stringify(
+            category_id: `${id}`
+        )
+        .then(result => result.json())
+        .then(data => addData(data))
+    })
+}
+
+function getMeals(event){
+    let id = event.target.getAttribute("data-category-id");
     fetch(mealsIndex)
     .then(result => result.json())
     .then(meals => {
-
+        if (id === meals.data.attributes.category_id){
         meals.data.map(meal => {
-
             let square = document.createElement("div");
             square.classList.add("square");
             square.setAttribute("data-id", `${meal.id}`);
@@ -54,8 +85,9 @@ function getMeals(){
 
             square.append(h2, h3, p);
             main.appendChild(square);
-
+        
         })
+    }
     })
 }
 
