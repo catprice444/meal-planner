@@ -9,4 +9,20 @@ header {
     height: 50px;
     text-align: center;
     font-size: larger;
-  }
+}
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+div.square {
+    background-color: blanchedalmond;
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 50px;
+    
+}

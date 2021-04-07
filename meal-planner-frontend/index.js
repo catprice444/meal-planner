@@ -12,7 +12,7 @@ function getMeals(){
     .then(result => result.json())
     .then(meals => {
 
-        meals.data.forEach(meal => {
+        meals.data.map(meal => {
 
             let square = document.createElement("div");
             square.classList.add("square");
@@ -20,8 +20,10 @@ function getMeals(){
 
             let h2 = document.createElement("h2");
             h2.innerText = `${meal.attributes.name}`;
+
             let h3 = document.createElement("h3")
             h3.innerText = `${meal.attributes.ingredients}`;
+             
             let p = document.createElement("p");
             p.innerText = `${meal.attributes.category.name}`;
 
