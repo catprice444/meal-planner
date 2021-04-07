@@ -2,14 +2,14 @@ const mealsIndex = "http://localhost:3000/meals"
 const categoriesIndex = "http://localhost:3000/categories"
 const main = document.querySelector("main")
 const header = document.querySelector("header")
-const newMeal = document.querySelector("new-meal-form")
+const newMeal = document.querySelector("#create-meals-form")
 
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
     getMeals()
     // createMealButton()
-    
+    newMeal.addEventListener("submit", (event) => addMeal(event))
 })
 
 function getMeals(){
@@ -48,11 +48,10 @@ function getMeals(){
 
 function addMeal(event){ 
     event.preventDefault();
-    const inputName = document.querySelector("#input-name").value; 
-    const inputIngredients = document.querySelector("#input-ingredients").value;
-    const inputCategory = document.querySelector("#input-category").value;
-    const categoryId = parseInt(inputCategory);
-    createMeal(inputName, inputIngredients, categoryId );
+    const inputName = document.querySelector("#input-name").value
+    const inputIngredients = document.querySelector("#input-ingredients").value
+    const inputCategory = parseInt(document.querySelector("#input-category").value)
+    createMeal(inputName, inputIngredients, inputCategory)
 }
 
 function createMeal(name, ingredients, category_id){
