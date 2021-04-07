@@ -68,8 +68,23 @@ function createMeal(inputName, inputIngredients, inputCategory){
         })
     })
     .then(result => result.json())
-    .then(meals => {
-        console.log(meals);
+    .then(meal => {
+
+            let square = document.createElement("div");
+            square.classList.add("square");
+            square.setAttribute("data-id", `${meal.id}`);
+
+            let h2 = document.createElement("h2");
+            h2.innerText = `${meal.data.attributes.name}`;
+
+            let h3 = document.createElement("h3")
+            h3.innerText = `${meal.data.attributes.ingredients}`;
+             
+            let p = document.createElement("p");
+            p.innerText = `${meal.data.attributes.category.name}`;
+
+            square.append(h2, h3, p);
+            main.appendChild(square);
     })
 }
 
