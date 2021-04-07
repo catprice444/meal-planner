@@ -7,10 +7,30 @@ const newMeal = document.querySelector("#create-meals-form");
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    getMeals()
+    getCategories()
+    // getMeals()
     // createMealButton()
     newMeal.addEventListener("submit", (event) => addMeal(event))
 })
+
+function getCategories(){
+    fetch(categoriesIndex)
+    .then(result => result.json())
+    .then(categories => {
+
+        categories.data.map(cat =>{
+            let square = document.createElement("div");
+            square.classList.add("square");
+            square.setAttribute("data-id", `${cat.id}`);
+            
+            let h2 = document.createElement("h2");
+            h2.innerText = `${cat.attributes.name}`;
+
+            square.append(h2)
+            main.appendChild(square)
+        })
+    })
+}
 
 function getMeals(){
     fetch(mealsIndex)
