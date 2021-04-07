@@ -8,6 +8,7 @@ const newMeal = document.querySelector("new-meal-form")
 
 document.addEventListener('DOMContentLoaded', ()=>{
     getMeals()
+    // createMealButton()
     
 })
 
@@ -38,15 +39,23 @@ function getMeals(){
     })
 }
 
-function createMealbutton(){
-    let button = document.createElement("button");
-    button.innerText = "Add a New Meal!";
-    button.addEventListener = ("click", (event) => addMeal(event));
-    header.append(button);
-}
+// function createMealButton(){
+//     let button = document.createElement("button");
+//     button.innerText = "Add a New Meal!";
+//     button.addEventListener = ("click", (event) => addMeal(event));
+//     header.append(button);
+// }
 
 function addMeal(event){ 
     event.preventDefault();
-    console.log("Yay")
+    const inputName = document.querySelector("#input-name").value; 
+    const inputIngredients = document.querySelector("#input-ingredients").value;
+    const inputCategory = document.querySelector("#input-category").value;
+    const categoryId = parseInt(inputCategory);
+    createMeal(inputName, inputIngredients, categoryId );
+}
+
+function createMeal(name, ingredients, category_id){
+    console.log(name, ingredients, category_id);
 }
 
