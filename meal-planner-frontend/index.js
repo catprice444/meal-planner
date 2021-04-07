@@ -1,7 +1,7 @@
 const mealsIndex = "http://localhost:3000/meals"
 const categoriesIndex = "http://localhost:3000/categories"
 const main = document.querySelector("main")
-
+const createMeal = document.getElementById("create-meals-form")
 
 document.addEventListener('DOMContentLoaded', ()=>{
     getMeals()
