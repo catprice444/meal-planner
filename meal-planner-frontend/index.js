@@ -37,13 +37,16 @@ function getMeals(){
 
 function createMealbutton(){
     let button = document.createElement("button");
-    button.innerText = "Add a New Meal!"
-    button.addEventListener = ("click", event => addMeal(event));
-    header.append(button)
+    button.innerText = "Add a New Meal!";
+    button.addEventListener = ("click", (event) => addMeal(event));
+    header.append(button);
 }
 
-function addMeal(event){
-
+function addMeal(event){ 
+    event.preventDefault();
+    let inputName = document.createElement("text")
+    inputName.value
+    header.append(inputName)
 }
 
 {/* <form id="create-meals-form">
