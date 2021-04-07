@@ -1,8 +1,8 @@
-const mealsIndex = "http://localhost:3000/meals"
-const categoriesIndex = "http://localhost:3000/categories"
-const main = document.querySelector("main")
-const header = document.querySelector("header")
-const newMeal = document.querySelector("#create-meals-form")
+const mealsIndex = "http://localhost:3000/meals";
+const categoriesIndex = "http://localhost:3000/categories";
+const main = document.querySelector("main");
+const header = document.querySelector("header");
+const newMeal = document.querySelector("#create-meals-form");
 
 
 
@@ -85,6 +85,10 @@ function createMeal(inputName, inputIngredients, inputCategory){
 
             square.append(h2, h3, p);
             main.appendChild(square);
+            document.getElementById('input-name').value="";
+            document.getElementById('input-ingredients').value="";
+            document.getElementById('input-category').value="";
     })
+    
 }
 
