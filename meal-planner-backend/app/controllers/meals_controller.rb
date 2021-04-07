@@ -9,12 +9,12 @@ class MealsController < ApplicationController
         if meal.save
             render json: MealSerializer.new(meal)
         else 
-            render json: {errors: meal.error.full_messages}
+            render json: {errors: meal.errors.full_messages}
         end 
     end 
 
     private 
     def meal_params
-        params.require(meals).permit(:name, :ingredients, :category)
+        params.permit(:name, :ingredients, :category_id)
     end 
 end

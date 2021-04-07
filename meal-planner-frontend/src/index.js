@@ -54,7 +54,22 @@ function addMeal(event){
     createMeal(inputName, inputIngredients, inputCategory)
 }
 
-function createMeal(name, ingredients, category_id){
-    console.log(name, ingredients, category_id);
+function createMeal(inputName, inputIngredients, inputCategory){
+    fetch(mealsIndex, {
+        method: "POST", 
+        headers: {
+            "Content-Type" : "application/json",
+            "Accept" : "application/json"
+        },
+        body: JSON.stringify({
+            name: inputName,
+            ingredients: inputIngredients,
+            category_id: inputCategory
+        })
+    })
+    .then(result => result.json())
+    .then(meals => {
+        console.log(meals);
+    })
 }
 
