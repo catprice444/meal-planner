@@ -9,7 +9,7 @@ const newMeal = document.querySelector("#create-meals-form");
 document.addEventListener('DOMContentLoaded', ()=>{
     getCategories()
     // getMeals()
-    // createMealButton()
+    createMealButton()
     newMeal.addEventListener("submit", (event) => addMeal(event))
 })
 
@@ -38,29 +38,19 @@ function getCategories(){
 }
 
 function getMealsInCategory(event){
+    event.preventDefault()
     let id = event.target.getAttribute("data-category-id");
-    let h3 = event.target.nextElementSibling;
-    let ul = document.createElement("ul")
-    let li = document.createElement("li");
-    let addData = function addData(data){
-        ul.innerText = `${data.attributes.name}`;
-        li.innerText = `${data.attributes.ingredients}`;
-        ul.appendChild(li)
-        h3.appendChild(ul)
-    }
+    let p = event.target.nextElementSibling;
+    let h3 = document.createElement("h3")
+    // let h4 = document.createElement("h4");
+    if (id === "1"){
 
-    fetch(mealsIndex, {
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json",
-            "Accept" : "application/json"
-        },
-        body: JSON.stringify(
-            category_id: `${id}`
-        )
-        .then(result => result.json())
-        .then(data => addData(data))
-    })
+        h3.innerText = "Do you work";
+        // h4.innerText = `${data.attributes.ingredients}`;
+        p.appendChild(h3)
+    }
+        
+
 }
 
 function getMeals(event){
@@ -91,12 +81,41 @@ function getMeals(event){
     })
 }
 
-// function createMealButton(){
-//     let button = document.createElement("button");
-//     button.innerText = "Add a New Meal!";
-//     button.addEventListener = ("click", (event) => addMeal(event));
-//     header.append(button);
-// }
+function createMealButton(){
+    let button = document.createElement("button");
+    button.innerText = "Add a New Meal!";
+    
+    const form = document.querySelector('#create-meals-form')
+    let toggle = true 
+    button.addEventListener = ("click", () => {
+        debugger
+        form.style.visibility = 'visible'
+        // if (toggle === true){
+        //     form.style.visibility = 'visible'
+        //     toggle = true
+        // } else {
+        //     form.style.visibility = 'hidden'
+        //     toggle = false
+        // }
+    });
+    header.append(button);
+    
+    // button.addEventListener('click', () => {
+    //     const formContainer = document.querySelector('#form-container')
+    //     formContainer.innerHTML = `<form id="create-meals-form" >
+    //     <input id="input-name" type="text" name="name" value="" placeholder="Enter your meal name" class="input-name">
+    //     <textarea id="input-ingredients" name="ingredients" value="" placeholder="Enter the ingredients needed to make the meal"></textarea>
+    //     <select id="input-category" name="categories">
+    //         <option value="1">Breakfast</option>
+    //         <option value="2">Lunch</option>
+    //         <option value="3">Dinner</option>
+    //         <option value="4">Snacks</option>
+    //         <option value="5">Drinks</option>
+    //     </select>
+    //     <input id= "create-button" type="submit" name="submit" value="Create New Meal" class="submit">
+    // </form>  `
+    // })
+}
 
 function addMeal(event){ 
     event.preventDefault();
