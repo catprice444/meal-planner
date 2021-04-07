@@ -2,10 +2,13 @@ const mealsIndex = "http://localhost:3000/meals"
 const categoriesIndex = "http://localhost:3000/categories"
 const main = document.querySelector("main")
 const header = document.querySelector("header")
+const newMeal = document.querySelector("new-meal-form")
+
+
 
 document.addEventListener('DOMContentLoaded', ()=>{
     getMeals()
-    createMealbutton()
+    
 })
 
 function getMeals(){
@@ -44,23 +47,6 @@ function createMealbutton(){
 
 function addMeal(event){ 
     event.preventDefault();
-    let inputName = document.createElement("text")
-    inputName.value
-    header.append(inputName)
+    console.log("Yay")
 }
 
-{/* <form id="create-meals-form">
-            <h3>Create a New Meal!</h3>
-
-            <input id="input-name" type="text" name="name" value="" placeholder="Enter your meal name" class="input-name">
-            <textarea id="input-ingredients" name="ingredients" value="" placeholder="Enter the ingredients needed to make the meal"></textarea>
-            <select id="input-category" name="categories">
-                <option value="category1">Breakfast</option>
-                <option value="category2">Lunch</option>
-                <option value="category3">Dinner</option>
-                <option value="category4">Snacks</option>
-                <option value="category5">Drinks</option>
-            </select>
-            <input id= "create-button" type="submit" name="submit" value="Create New Meal" class="submit">
-
-        </form> */}
