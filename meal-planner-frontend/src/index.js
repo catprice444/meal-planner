@@ -8,8 +8,6 @@ mealView.innerText = "Meals";
 const categoryView = document.createElement("button");
 categoryView.innerText = "Categories";
 
-
-
 document.addEventListener('DOMContentLoaded', ()=>{
     getCategories()
     // getMeals()
@@ -24,8 +22,6 @@ function viewButtons(){
     mealView.addEventListener("click", () => getMeals())
     categoryView.addEventListener("click", () => getCategories())
 }
-
-
 
 function getCategories(){
     fetch(categoriesIndex)
@@ -72,27 +68,7 @@ function getCategories(){
     })
 }
 
-// function getMealsInCategory(event){
-//     event.preventDefault()
-//     let id = event.target.getAttribute("data-category-id");
-//      // let mealId = event.target.getAttribute("data-category")
-//     // let p = event.target.nextElementSibling;
-//     // let h3 = document.createElement("h3")
-//     // // let h4 = document.createElement("h4");
-//     // // if (id === "1"){
-//     //     console.log(`${id}`);
-//     //     // h4.innerText = `${data.attributes.ingredients}`;
-//     //     // p.appendChild(h3)
-//     // // }
-//     // // if (id === "2"){
-//     // //     console.log("Lunch");
-//     // //     // h4.innerText = `${data.attributes.ingredients}`;
-//     // //     // p.appendChild(h3)
-//     // // }
-// }
-
 function getMeals(){
-    // let id = event.target.getAttribute("data-category-id");
     fetch(mealsIndex)
     .then(result => result.json())
     .then(meals => {
