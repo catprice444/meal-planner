@@ -31,7 +31,7 @@ function getCategories(){
         categories.data.map(cat =>{
             let square = document.createElement("div");
             square.classList.add("square");
-            square.setAttribute("data-id", `${cat.id}`);
+            square.setAttribute("id", `${cat.id}`);
             
             let h2 = document.createElement("h2");
             h2.innerText = `${cat.attributes.name}`;
@@ -76,7 +76,7 @@ function getMeals(){
         meals.data.map(meal => {
             let square = document.createElement("div");
             square.classList.add("square");
-            square.setAttribute("data-id", `${meal.id}`);
+            square.setAttribute("id", `${meal.id}`);
 
             let h2 = document.createElement("h2");
             h2.innerText = `${meal.attributes.name}`;
@@ -152,7 +152,8 @@ function createNewMeal(meal){
     if (mealView === true){
         square.append(h2, h3, p);
         main.appendChild(square);
-    }
+    } 
+
     document.getElementById('input-name').value="";
     document.getElementById('input-ingredients').value="";
     document.getElementById('input-category').value="";
