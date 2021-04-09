@@ -7,6 +7,7 @@ const mealView = document.createElement("button");
 mealView.innerText = "Meals";
 const categoryView = document.createElement("button");
 categoryView.innerText = "Categories";
+const buttonSection = document.querySelector("#button-section")
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -18,8 +19,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 })
 
 function viewButtons(){
-    header.appendChild(mealView)
-    header.appendChild(categoryView)
+    buttonSection.appendChild(mealView)
+    buttonSection.appendChild(categoryView)
     mealView.addEventListener("click", () => getMeals())
     categoryView.addEventListener("click", () => getCategories())
 }

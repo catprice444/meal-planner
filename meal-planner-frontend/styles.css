@@ -5,9 +5,16 @@ body {
 
 header {
     background-color: lightgrey;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     text-align: center;
     font-size: larger;
+    vertical-align: middle;
+}
+#button-section{
+    padding-top: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 #selected-view {
