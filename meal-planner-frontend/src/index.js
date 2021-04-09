@@ -3,15 +3,29 @@ const categoriesIndex = "http://localhost:3000/categories";
 const main = document.querySelector("main");
 const header = document.querySelector("header");
 const newMeal = document.querySelector("#create-meals-form");
+const mealView = document.createElement("button");
+mealView.innerText = "Meals";
+const categoryView = document.createElement("button");
+categoryView.innerText = "Categories";
 
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    getCategories()
+    // getCategories()
     // getMeals()
     createMealButton()
     newMeal.addEventListener("submit", (event) => addMeal(event))
+    viewButtons()
 })
+
+function viewButtons(){
+    header.appendChild(mealView)
+    header.appendChild(categoryView)
+    mealView.addEventListener("click", () => getMeals())
+    categoryView.addEventListener("click", () => getCategories())
+}
+
+
 
 function getCategories(){
     fetch(categoriesIndex)
@@ -53,12 +67,12 @@ function getMealsInCategory(event){
 
 }
 
-function getMeals(event){
-    let id = event.target.getAttribute("data-category-id");
+function getMeals(){
+    // let id = event.target.getAttribute("data-category-id");
     fetch(mealsIndex)
     .then(result => result.json())
     .then(meals => {
-        if (id === meals.data.attributes.category_id){
+        
         meals.data.map(meal => {
             let square = document.createElement("div");
             square.classList.add("square");
@@ -77,16 +91,13 @@ function getMeals(event){
             main.appendChild(square);
         
         })
-    }
     })
 }
 
 function createMealButton(){
     let button = document.createElement("button");
     button.innerText = "Add a New Meal!";
-    
     const form = document.querySelector('#form-container')
-    // form.style.visibility = 'visible'
     button.addEventListener("click", function(){
         if (form.style.visibility = 'hidden'){
             form.style.visibility = 'visible';
@@ -96,25 +107,7 @@ function createMealButton(){
         //     button.innerText = "Add a New Meal!";
         } 
     });
-
-
     header.append(button);
-    
-    // button.addEventListener('click', () => {
-    //     const formContainer = document.querySelector('#form-container')
-    //     formContainer.innerHTML = `<form id="create-meals-form" >
-    //     <input id="input-name" type="text" name="name" value="" placeholder="Enter your meal name" class="input-name">
-    //     <textarea id="input-ingredients" name="ingredients" value="" placeholder="Enter the ingredients needed to make the meal"></textarea>
-    //     <select id="input-category" name="categories">
-    //         <option value="1">Breakfast</option>
-    //         <option value="2">Lunch</option>
-    //         <option value="3">Dinner</option>
-    //         <option value="4">Snacks</option>
-    //         <option value="5">Drinks</option>
-    //     </select>
-    //     <input id= "create-button" type="submit" name="submit" value="Create New Meal" class="submit">
-    // </form>  `
-    // })
 }
 
 function addMeal(event){ 
@@ -122,10 +115,10 @@ function addMeal(event){
     const inputName = document.querySelector("#input-name").value
     const inputIngredients = document.querySelector("#input-ingredients").value
     const inputCategory = parseInt(document.querySelector("#input-category").value)
-    createMeal(inputName, inputIngredients, inputCategory)
+    submitForm(inputName, inputIngredients, inputCategory)
 }
 
-function createMeal(inputName, inputIngredients, inputCategory){
+function submitForm(inputName, inputIngredients, inputCategory){
     fetch(mealsIndex, {
         method: "POST", 
         headers: {
@@ -139,27 +132,27 @@ function createMeal(inputName, inputIngredients, inputCategory){
         })
     })
     .then(result => result.json())
-    .then(meal => {
+    .then(meal => createNewMeal(meal))
+}
 
-            let square = document.createElement("div");
-            square.classList.add("square");
-            square.setAttribute("data-id", `${meal.id}`);
+function createNewMeal(meal){
+    let square = document.createElement("div");
+    square.classList.add("square");
+    square.setAttribute("data-id", `${meal.id}`);
 
-            let h2 = document.createElement("h2");
-            h2.innerText = `${meal.data.attributes.name}`;
+    let h2 = document.createElement("h2");
+    h2.innerText = `${meal.data.attributes.name}`;
 
-            let h3 = document.createElement("h3")
-            h3.innerText = `${meal.data.attributes.ingredients}`;
+    let h3 = document.createElement("h3")
+    h3.innerText = `${meal.data.attributes.ingredients}`;
              
-            let p = document.createElement("p");
-            p.innerText = `${meal.data.attributes.category.name}`;
+    let p = document.createElement("p");
+    p.innerText = `${meal.data.attributes.category.name}`;
 
-            square.append(h2, h3, p);
-            main.appendChild(square);
-            document.getElementById('input-name').value="";
-            document.getElementById('input-ingredients').value="";
-            document.getElementById('input-category').value="";
-    })
-    
+    square.append(h2, h3, p);
+    main.appendChild(square);
+    document.getElementById('input-name').value="";
+    document.getElementById('input-ingredients').value="";
+    document.getElementById('input-category').value="";
 }
 
