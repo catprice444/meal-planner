@@ -9,11 +9,11 @@ const categoryView = document.createElement("button");
 categoryView.innerText = "Categories";
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    getCategories()
+    // getCategories()
     // getMeals()
     createMealButton()
     newMeal.addEventListener("submit", (event) => addMeal(event))
-    // viewButtons()
+    viewButtons()
 })
 
 function viewButtons(){
@@ -149,8 +149,10 @@ function createNewMeal(meal){
     let p = document.createElement("p");
     p.innerText = `${meal.data.attributes.category.name}`;
 
-    square.append(h2, h3, p);
-    main.appendChild(square);
+    if (mealView === true){
+        square.append(h2, h3, p);
+        main.appendChild(square);
+    }
     document.getElementById('input-name').value="";
     document.getElementById('input-ingredients').value="";
     document.getElementById('input-category').value="";
