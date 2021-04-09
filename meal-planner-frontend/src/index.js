@@ -98,13 +98,16 @@ function createMealButton(){
     let button = document.createElement("button");
     button.innerText = "Add a New Meal!";
     const form = document.querySelector('#form-container')
+    let number = 1
     button.addEventListener("click", () => {
-        if (form.style.visibility = 'hidden'){
+        if (number === 1){
             form.style.visibility = 'visible';
             button.innerText = "Close Form";
-        // } else if (form.style.visibility = 'visible'){ 
-        //     form.style.visibility = 'hidden';
-        //     button.innerText = "Add a New Meal!";
+            number = 2
+        } else { 
+            form.style.visibility = 'hidden';
+            button.innerText = "Add a New Meal!";
+            number = 1
         } 
     });
     header.append(button);
