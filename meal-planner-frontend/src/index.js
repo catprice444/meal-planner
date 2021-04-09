@@ -43,7 +43,7 @@ function getCategories(){
             let button = document.createElement("button");
             button.innerText = "View Meals";
             button.setAttribute("data-category-id", `${cat.id}`);
-            // button.addEventListener("click", (event) => getMealsInCategory(event));
+            
 
             square.append(h2, button);
             main.appendChild(square);
@@ -52,7 +52,7 @@ function getCategories(){
 
                 let mealsInCategory = document.createElement("p");
                 mealsInCategory.setAttribute("category-meals", `${meal.category_id}`); 
-                // mealsInCategory.style.visibility = "hidden";
+                mealsInCategory.style.visibility = "hidden";
             
                 let mealNameInCategory = document.createElement("h4");
                 mealNameInCategory.innerText = `${meal.name}`;
@@ -62,6 +62,10 @@ function getCategories(){
 
                 mealsInCategory.append(mealNameInCategory, mealIngredientsInCategory);
                 square.append(mealsInCategory)
+
+                button.addEventListener("click", () => {
+                    mealsInCategory.style.visibility = "visible"
+                });
             })
 
         })
@@ -118,7 +122,7 @@ function createMealButton(){
     let button = document.createElement("button");
     button.innerText = "Add a New Meal!";
     const form = document.querySelector('#form-container')
-    button.addEventListener("click", function(){
+    button.addEventListener("click", () => {
         if (form.style.visibility = 'hidden'){
             form.style.visibility = 'visible';
             button.innerText = "Close Form";
