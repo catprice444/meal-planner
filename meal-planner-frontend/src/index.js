@@ -11,11 +11,11 @@ categoryView.innerText = "Categories";
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    // getCategories()
+    getCategories()
     // getMeals()
     createMealButton()
     newMeal.addEventListener("submit", (event) => addMeal(event))
-    viewButtons()
+    // viewButtons()
 })
 
 function viewButtons(){
@@ -48,21 +48,28 @@ function getCategories(){
             square.append(h2, button);
             main.appendChild(square);
         })
+
+        
     })
 }
 
 function getMealsInCategory(event){
     event.preventDefault()
     let id = event.target.getAttribute("data-category-id");
+    let mealId = event.target.getAttribute("data-category")
     let p = event.target.nextElementSibling;
     let h3 = document.createElement("h3")
     // let h4 = document.createElement("h4");
-    if (id === "1"){
-
-        h3.innerText = "Do you work";
+    // if (id === "1"){
+        console.log(`${id}`);
         // h4.innerText = `${data.attributes.ingredients}`;
-        p.appendChild(h3)
-    }
+        // p.appendChild(h3)
+    // }
+    // if (id === "2"){
+    //     console.log("Lunch");
+    //     // h4.innerText = `${data.attributes.ingredients}`;
+    //     // p.appendChild(h3)
+    // }
         
 
 }
