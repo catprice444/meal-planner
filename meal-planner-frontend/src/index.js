@@ -85,19 +85,19 @@ function createMealButton(){
     let button = document.createElement("button");
     button.innerText = "Add a New Meal!";
     
-    const form = document.querySelector('#create-meals-form')
-    let toggle = true 
-    button.addEventListener = ("click", () => {
-        debugger
-        form.style.visibility = 'visible'
-        // if (toggle === true){
-        //     form.style.visibility = 'visible'
-        //     toggle = true
-        // } else {
-        //     form.style.visibility = 'hidden'
-        //     toggle = false
-        // }
+    const form = document.querySelector('#form-container')
+    // form.style.visibility = 'visible'
+    button.addEventListener("click", function(){
+        if (form.style.visibility = 'hidden'){
+            form.style.visibility = 'visible';
+            button.innerText = "Close Form";
+        // } else if (form.style.visibility = 'visible'){ 
+        //     form.style.visibility = 'hidden';
+        //     button.innerText = "Add a New Meal!";
+        } 
     });
+
+
     header.append(button);
     
     // button.addEventListener('click', () => {

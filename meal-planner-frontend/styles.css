@@ -26,6 +26,6 @@ div.square {
     
 }
 
-#create-meals-form {
+div#form-container {
     visibility: hidden;
 }
