@@ -41,38 +41,51 @@ function getCategories(){
             h2.innerText = `${cat.attributes.name}`;
 
             let button = document.createElement("button");
-            button.innerText = "View this category";
+            button.innerText = "View Meals";
             button.setAttribute("data-category-id", `${cat.id}`);
-            button.addEventListener("click", (event) => getMealsInCategory(event));
+            // button.addEventListener("click", (event) => getMealsInCategory(event));
 
             square.append(h2, button);
             main.appendChild(square);
-        })
 
-        
+            cat.attributes.meals.forEach(meal => {
+
+                let mealsInCategory = document.createElement("p");
+                mealsInCategory.setAttribute("category-meals", `${meal.category_id}`); 
+                // mealsInCategory.style.visibility = "hidden";
+            
+                let mealNameInCategory = document.createElement("h4");
+                mealNameInCategory.innerText = `${meal.name}`;
+
+                let mealIngredientsInCategory = document.createElement("li");
+                mealIngredientsInCategory.innerText = `${meal.ingredients}`;
+
+                mealsInCategory.append(mealNameInCategory, mealIngredientsInCategory);
+                square.append(mealsInCategory)
+            })
+
+        })
     })
 }
 
-function getMealsInCategory(event){
-    event.preventDefault()
-    let id = event.target.getAttribute("data-category-id");
-    let mealId = event.target.getAttribute("data-category")
-    let p = event.target.nextElementSibling;
-    let h3 = document.createElement("h3")
-    // let h4 = document.createElement("h4");
-    // if (id === "1"){
-        console.log(`${id}`);
-        // h4.innerText = `${data.attributes.ingredients}`;
-        // p.appendChild(h3)
-    // }
-    // if (id === "2"){
-    //     console.log("Lunch");
-    //     // h4.innerText = `${data.attributes.ingredients}`;
-    //     // p.appendChild(h3)
-    // }
-        
-
-}
+// function getMealsInCategory(event){
+//     event.preventDefault()
+//     let id = event.target.getAttribute("data-category-id");
+//      // let mealId = event.target.getAttribute("data-category")
+//     // let p = event.target.nextElementSibling;
+//     // let h3 = document.createElement("h3")
+//     // // let h4 = document.createElement("h4");
+//     // // if (id === "1"){
+//     //     console.log(`${id}`);
+//     //     // h4.innerText = `${data.attributes.ingredients}`;
+//     //     // p.appendChild(h3)
+//     // // }
+//     // // if (id === "2"){
+//     // //     console.log("Lunch");
+//     // //     // h4.innerText = `${data.attributes.ingredients}`;
+//     // //     // p.appendChild(h3)
+//     // // }
+// }
 
 function getMeals(){
     // let id = event.target.getAttribute("data-category-id");
