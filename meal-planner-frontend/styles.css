@@ -17,9 +17,16 @@ header {
     vertical-align: middle;
 }
 
-#selected-view {
+#category-view {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+#meal-view {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
@@ -31,7 +38,14 @@ div.square {
     width: 400px;
     padding: 10px;
     border-radius: 50px;
-    
+}
+
+div.list{
+    background-color: coral;
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 50px;
 }
 
 div#form-container {

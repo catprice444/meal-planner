@@ -1,6 +1,7 @@
 const mealsIndex = "http://localhost:3000/meals";
 const categoriesIndex = "http://localhost:3000/categories";
-const selectedView = document.querySelector("#selected-view");
+const categoryDiv = document.querySelector("#category-view");
+const mealDiv = document.querySelector("#meal-view")
 const header = document.querySelector("header");
 const newMeal = document.querySelector("#create-meals-form");
 const mealView = document.createElement("button");
@@ -44,7 +45,7 @@ function getCategories(){
             
 
             square.append(h2, button);
-            selectedView.appendChild(square);
+            categoryDiv.appendChild(square);
 
             cat.attributes.meals.forEach(meal => {
 
@@ -76,9 +77,9 @@ function getMeals(){
     .then(meals => {
         
         meals.data.map(meal => {
-            let square = document.createElement("div");
-            square.classList.add("square");
-            square.setAttribute("id", `${meal.id}`);
+            let list = document.createElement("div");
+            list.classList.add("list");
+            list.setAttribute("id", `${meal.id}`);
 
             let h2 = document.createElement("h2");
             h2.innerText = `${meal.attributes.name}`;
@@ -89,8 +90,8 @@ function getMeals(){
             let p = document.createElement("p");
             p.innerText = `${meal.attributes.category.name}`;
 
-            square.append(h2, h3, p);
-            selectedView.appendChild(square);
+            list.append(h2, h3, p);
+            mealDiv.appendChild(list);
         
         })
     })
@@ -141,9 +142,9 @@ function submitForm(inputName, inputIngredients, inputCategory){
 }
 
 function createNewMeal(meal){
-    let square = document.createElement("div");
-    square.classList.add("square");
-    square.setAttribute("data-id", `${meal.id}`);
+    let list = document.createElement("div");
+    list.classList.add("list");
+    list.setAttribute("data-id", `${meal.id}`);
 
     let h2 = document.createElement("h2");
     h2.innerText = `${meal.data.attributes.name}`;
@@ -155,8 +156,8 @@ function createNewMeal(meal){
     p.innerText = `${meal.data.attributes.category.name}`;
 
     if (mealView === true){
-        square.append(h2, h3, p);
-        selectedView.appendChild(square);
+        list.append(h2, h3, p);
+        mealDiv.appendChild(list);
     } 
 
     document.getElementById('input-name').value="";
