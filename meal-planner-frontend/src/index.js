@@ -1,12 +1,13 @@
 const mealsIndex = "http://localhost:3000/meals";
 const categoriesIndex = "http://localhost:3000/categories";
-const main = document.querySelector("main");
+const selectedView = document.querySelector("#selected-view");
 const header = document.querySelector("header");
 const newMeal = document.querySelector("#create-meals-form");
 const mealView = document.createElement("button");
 mealView.innerText = "Meals";
 const categoryView = document.createElement("button");
 categoryView.innerText = "Categories";
+
 
 document.addEventListener('DOMContentLoaded', ()=>{
     // getCategories()
@@ -42,7 +43,7 @@ function getCategories(){
             
 
             square.append(h2, button);
-            main.appendChild(square);
+            selectedView.appendChild(square);
 
             cat.attributes.meals.forEach(meal => {
 
@@ -88,7 +89,7 @@ function getMeals(){
             p.innerText = `${meal.attributes.category.name}`;
 
             square.append(h2, h3, p);
-            main.appendChild(square);
+            selectedView.appendChild(square);
         
         })
     })
@@ -154,7 +155,7 @@ function createNewMeal(meal){
 
     if (mealView === true){
         square.append(h2, h3, p);
-        main.appendChild(square);
+        selectedView.appendChild(square);
     } 
 
     document.getElementById('input-name').value="";

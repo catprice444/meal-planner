@@ -9,7 +9,8 @@ header {
     text-align: center;
     font-size: larger;
 }
-main {
+
+#selected-view {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
