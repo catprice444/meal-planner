@@ -173,10 +173,10 @@ function createNewMeal(meal){
     let p = document.createElement("p");
     p.innerText = `${meal.data.attributes.category.name}`;
 
-    if (mealDiv.style.display === 'grid'){
+    // if(mealDiv.style.display === "grid"){
         list.append(h2, h3, p);
         mealDiv.appendChild(list);
-    } 
+    // } 
 
     document.getElementById('input-name').value="";
     document.getElementById('input-ingredients').value="";
