@@ -22,8 +22,35 @@ document.addEventListener('DOMContentLoaded', ()=>{
 function viewButtons(){
     buttonSection.appendChild(mealView)
     buttonSection.appendChild(categoryView)
-    mealView.addEventListener("click", () => getMeals())
-    categoryView.addEventListener("click", () => getCategories())
+
+    let mealNumber = 1
+    mealView.addEventListener("click", () => {
+        if(mealNumber === 1){
+            getMeals()
+            mealNumber = 2
+        } else if (mealNumber === 2){
+            mealDiv.style.visibility = "hidden"
+            mealNumber = 3
+        } else {
+            mealDiv.style.visibility = "visible"
+            mealNumber = 2
+        }
+    })
+
+    let categoryNumber = 1
+    categoryView.addEventListener("click", () => {
+        if(categoryNumber === 1){
+            getCategories()
+            categoryNumber = 2
+        } else if (categoryNumber === 2){
+            categoryDiv.style.visibility = "hidden"
+            categoryNumber = 3
+        } else {
+            categoryDiv.style.visibility = "visible"
+            categoryNumber = 2
+        }
+        
+    })
 }
 
 function getCategories(){
