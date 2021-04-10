@@ -1,36 +1,48 @@
 body {
-    margin: 0;
-    padding: 0;
+    background-color:white;
   }
 
 header {
-    background-color: lightgrey;
-    /* margin: 0 auto; */
+    background-color: #FDF8F5;
+    margin: 0 auto;
+    padding: 0;
     text-align: center;
-    font-size: larger;
     vertical-align: middle;
 }
+
+h2{
+    font: 'Courier New';
+    font-size: 200%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#create-meals-form{
+    display: inline-flex;
+    border: 8px;
+}
+
 #button-section{
     padding-top: 20px;
     padding-bottom: 30px;
     text-align: center;
     vertical-align: middle;
-    background-color: #eee;
+    background-color: #FDF8F5;
     color: #444;
     cursor: pointer;
-    padding: 18px;
-    width: 100%;
     border: none;
     outline: none;
     transition: 0.4s;
 }
 
 button{
-    width: 50%;
+    width: 20%;
+    border-radius: 8px;
+    padding: 12px 28px;
 }
 
 button:hover {
-    background-color: #4CAF50; 
+    background-color: #266150; 
     color: white;
   }
 
@@ -50,7 +62,7 @@ button:hover {
 }
 
 div.square {
-    background-color: blanchedalmond;
+    background-color: #E8CEBF;
     height: 400px;
     width: 400px;
     padding: 10px;
@@ -58,7 +70,7 @@ div.square {
 }
 
 div.list{
-    background-color: coral;
+    background-color: #E8CEBF;
     height: 200px;
     width: 200px;
     padding: 10px;
