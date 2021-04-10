@@ -68,7 +68,8 @@ function getCategories(){
             cat.attributes.meals.forEach(meal => {
 
                 let mealsInCategory = document.createElement("p");
-                mealsInCategory.setAttribute("category-meals", `${meal.category_id}`); 
+                mealsInCategory.classList = "category-meals";
+                mealsInCategory.id = `${meal.category_id}`;
                 mealsInCategory.style.visibility = "hidden";
             
                 let mealNameInCategory = document.createElement("h4");
@@ -81,10 +82,13 @@ function getCategories(){
                 square.append(mealsInCategory)
 
                 button.addEventListener("click", () => {
-                    mealsInCategory.style.visibility = "visible"
+                    if(mealsInCategory.style.visibility === "hidden"){
+                        mealsInCategory.style.visibility = "visible"
+                    } else {
+                        mealsInCategory.style.visibility = "hidden"
+                    }
                 });
             })
-
         })
     })
 }
@@ -119,16 +123,14 @@ function createMealButton(){
     let button = document.createElement("button");
     button.innerText = "Add a New Meal!";
     const form = document.querySelector('#form-container')
-    let number = 1
+    form.style.visibility = "hidden"
     button.addEventListener("click", () => {
-        if (number === 1){
-            form.style.visibility = 'visible';
+        if (form.style.visibility === "hidden"){
+            form.style.visibility = "visible";
             button.innerText = "Close Form";
-            number = 2
         } else { 
-            form.style.visibility = 'hidden';
+            form.style.visibility = "hidden";
             button.innerText = "Add a New Meal!";
-            number = 1
         } 
     });
     header.append(button);
@@ -173,10 +175,16 @@ function createNewMeal(meal){
     let p = document.createElement("p");
     p.innerText = `${meal.data.attributes.category.name}`;
 
-    // if(mealDiv.style.display === "grid"){
-        list.append(h2, h3, p);
-        mealDiv.appendChild(list);
-    // } 
+    list.append(h2, h3, p);
+    mealDiv.appendChild(list);
+
+    let categoryId = `${meal.data.attributes.category_id}`;
+    let mealInsert = document.getElementsByClassName("category-meals");
+    for(let i = 0; i > mealInsert; i++){
+        if(mealInsert[i].id === categoryId){
+            console.log("maybe")
+        }
+    }
 
     document.getElementById('input-name').value="";
     document.getElementById('input-ingredients').value="";
