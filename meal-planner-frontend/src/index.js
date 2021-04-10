@@ -10,8 +10,15 @@ const buttonSection = document.querySelector("#button-section")
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    // getCategories()
-    // getMeals()
+    getCategories()
+    // categoryView.appendChild(categoryDiv)
+    categoryDiv.style.display = "none"
+
+    getMeals()
+    // mealView.appendChild(mealDiv)
+    mealDiv.style.display = "none"
+    
+
     createMealButton()
     newMeal.addEventListener("submit", (event) => addMeal(event))
     viewButtons()
@@ -20,52 +27,53 @@ document.addEventListener('DOMContentLoaded', ()=>{
 function viewButtons(){
     buttonSection.appendChild(mealView)
     buttonSection.appendChild(categoryView)
+    // let number = 1
+    // buttonSection.addEventListener("click", ()=>{
+    //     if(number === 1){
+    //         console.log("meal")
+    //     }
+    //     console.log("category")
+    // })
 
-    let mealNumber = 1
+    // let mealNumber = 1
     mealView.addEventListener("click", () => {
-        if(mealNumber === 1){
-            getMeals()
-            mealNumber = 2
-        } else if (mealNumber === 2){
-            mealDiv.style.display = "none"
-            mealNumber = 3
-        } else {
+        if(mealDiv.style.display === "none"){
             mealDiv.style.display = "grid"
-            mealNumber = 2
-        }
-    })
-
-    let categoryNumber = 1
-    categoryView.addEventListener("click", () => {
-        if(categoryNumber === 1){
-            getCategories()
-            categoryNumber = 2
-        } else if (categoryNumber === 2){
-            categoryDiv.style.display = "none"
-            categoryNumber = 3
+            // mealNumber = 2
         } else {
-            categoryDiv.style.display = "grid"
-            categoryNumber = 2
-        }
-        
+            mealDiv.style.display = "none"
+            // mealNumber = 1
+        } 
+        categoryDiv.style.display = "none"
     })
-    // let acc = document.getElementsByClassName("accordion");
-    // let i;
 
-    // for (i = 0; i < acc.length; i++) {
-    // acc[i].addEventListener("click", function() {
+    // let categoryNumber = 1
+    categoryView.addEventListener("click", () => {
+        if(categoryDiv.style.display === "none"){
+            categoryDiv.style.display = "grid"
+            // categoryNumber = 2
+        } else{
+            categoryDiv.style.display = "none"
+            // categoryNumber = 1
+        } 
+        mealDiv.style.display = "none"
+    })
+    // let buttons = document.getElementsByClassName("accordion");
+
+    // for (let i = 0; i < buttons.length; i++) {
+    // buttons[i].addEventListener("click", function() {
     // /* Toggle between adding and removing the "active" class,
     // to highlight the button that controls the panel */
-    // this.classList.toggle("active");
+    //     this.classList.toggle("active");
 
     // /* Toggle between hiding and showing the active panel */
-    // let panel = this.nextElementSibling;
-    // if (panel.style.display === "block") {
-    //   panel.style.display = "none";
-    // } else {
-    //   panel.style.display = "block";
-    // }
-//   });
+    //     let panel = this.childElement;
+    //     if (panel.style.display === "grid") {
+    //         panel.style.display = "none";
+    //     } else {
+    //         panel.style.display = "grid";
+    //     }
+    // });
 // }
 }
 
@@ -198,7 +206,7 @@ function createNewMeal(meal){
     let p = document.createElement("p");
     p.innerText = `${meal.data.attributes.category.name}`;
 
-    if (mealView === true){
+    if (mealDiv.style.display === 'grid'){
         list.append(h2, h3, p);
         mealDiv.appendChild(list);
     } 
