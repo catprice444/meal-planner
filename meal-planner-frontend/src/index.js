@@ -4,10 +4,8 @@ const categoryDiv = document.querySelector("#category-view");
 const mealDiv = document.querySelector("#meal-view")
 const header = document.querySelector("header");
 const newMeal = document.querySelector("#create-meals-form");
-const mealView = document.createElement("button");
-mealView.innerText = "Meals";
-const categoryView = document.createElement("button");
-categoryView.innerText = "Categories";
+const mealView = document.querySelector("#meal-list");
+const categoryView = document.querySelector("#category-list");
 const buttonSection = document.querySelector("#button-section")
 
 
@@ -29,10 +27,10 @@ function viewButtons(){
             getMeals()
             mealNumber = 2
         } else if (mealNumber === 2){
-            mealDiv.style.visibility = "hidden"
+            mealDiv.style.display = "none"
             mealNumber = 3
         } else {
-            mealDiv.style.visibility = "visible"
+            mealDiv.style.display = "grid"
             mealNumber = 2
         }
     })
@@ -43,14 +41,32 @@ function viewButtons(){
             getCategories()
             categoryNumber = 2
         } else if (categoryNumber === 2){
-            categoryDiv.style.visibility = "hidden"
+            categoryDiv.style.display = "none"
             categoryNumber = 3
         } else {
-            categoryDiv.style.visibility = "visible"
+            categoryDiv.style.display = "grid"
             categoryNumber = 2
         }
         
     })
+    // let acc = document.getElementsByClassName("accordion");
+    // let i;
+
+    // for (i = 0; i < acc.length; i++) {
+    // acc[i].addEventListener("click", function() {
+    // /* Toggle between adding and removing the "active" class,
+    // to highlight the button that controls the panel */
+    // this.classList.toggle("active");
+
+    // /* Toggle between hiding and showing the active panel */
+    // let panel = this.nextElementSibling;
+    // if (panel.style.display === "block") {
+    //   panel.style.display = "none";
+    // } else {
+    //   panel.style.display = "block";
+    // }
+//   });
+// }
 }
 
 function getCategories(){
