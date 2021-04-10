@@ -178,13 +178,19 @@ function createNewMeal(meal){
     list.append(h2, h3, p);
     mealDiv.appendChild(list);
 
-    let categoryId = `${meal.data.attributes.category_id}`;
-    let mealInsert = document.getElementsByClassName("category-meals");
-    for(let i = 0; i > mealInsert; i++){
-        if(mealInsert[i].id === categoryId){
-            console.log("maybe")
+    // let dinner = 2
+    // let categoryId = `${meal.data.attributes.category_id}`;
+    // let mealInsert = document.getElementsByClassName("category-meals");
+    // for(let i = 0; i > mealInsert; i++){
+        // if(mealInsert[i].id === 2){
+        //     console.log("maybe")
+        // }
+        if(p.innerText === "Drinks"){
+            console.log("This is a drink")
+        } else {
+            console.log("This is not a drink")
         }
-    }
+    // }
 
     document.getElementById('input-name').value="";
     document.getElementById('input-ingredients').value="";
