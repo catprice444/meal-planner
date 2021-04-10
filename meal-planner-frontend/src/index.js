@@ -11,14 +11,11 @@ const buttonSection = document.querySelector("#button-section")
 
 document.addEventListener('DOMContentLoaded', ()=>{
     getCategories()
-    // categoryView.appendChild(categoryDiv)
     categoryDiv.style.display = "none"
 
     getMeals()
-    // mealView.appendChild(mealDiv)
     mealDiv.style.display = "none"
     
-
     createMealButton()
     newMeal.addEventListener("submit", (event) => addMeal(event))
     viewButtons()
@@ -27,54 +24,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
 function viewButtons(){
     buttonSection.appendChild(mealView)
     buttonSection.appendChild(categoryView)
-    // let number = 1
-    // buttonSection.addEventListener("click", ()=>{
-    //     if(number === 1){
-    //         console.log("meal")
-    //     }
-    //     console.log("category")
-    // })
-
-    // let mealNumber = 1
+    
     mealView.addEventListener("click", () => {
         if(mealDiv.style.display === "none"){
             mealDiv.style.display = "grid"
-            // mealNumber = 2
         } else {
             mealDiv.style.display = "none"
-            // mealNumber = 1
         } 
         categoryDiv.style.display = "none"
     })
 
-    // let categoryNumber = 1
     categoryView.addEventListener("click", () => {
         if(categoryDiv.style.display === "none"){
             categoryDiv.style.display = "grid"
-            // categoryNumber = 2
         } else{
             categoryDiv.style.display = "none"
-            // categoryNumber = 1
         } 
         mealDiv.style.display = "none"
     })
-    // let buttons = document.getElementsByClassName("accordion");
-
-    // for (let i = 0; i < buttons.length; i++) {
-    // buttons[i].addEventListener("click", function() {
-    // /* Toggle between adding and removing the "active" class,
-    // to highlight the button that controls the panel */
-    //     this.classList.toggle("active");
-
-    // /* Toggle between hiding and showing the active panel */
-    //     let panel = this.childElement;
-    //     if (panel.style.display === "grid") {
-    //         panel.style.display = "none";
-    //     } else {
-    //         panel.style.display = "grid";
-    //     }
-    // });
-// }
 }
 
 function getCategories(){
