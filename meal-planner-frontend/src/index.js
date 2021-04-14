@@ -55,7 +55,7 @@ function getCategories(){
             square.setAttribute("id", `${cat.id}`);
             
             let h2 = document.createElement("h2");
-            h2.innerText = `${cat.attributes.name}`;
+            h2.innerText = `${cat.attributes.name}:`;
 
             let button = document.createElement("button");
             button.innerText = "View Meals";
@@ -66,7 +66,6 @@ function getCategories(){
             categoryDiv.appendChild(square);
 
             cat.attributes.meals.forEach(meal => {
-
                 let mealsInCategory = document.createElement("p");
                 mealsInCategory.classList = "category-meals";
                 mealsInCategory.id = `${meal.category_id}`;
@@ -164,10 +163,11 @@ function submitForm(inputName, inputIngredients, inputCategory){
 function createNewMeal(meal){
     let list = document.createElement("div");
     list.classList.add("list");
-    list.setAttribute("data-id", `${meal.id}`);
+    list.setAttribute("id", `${meal.id}`);
 
     let h2 = document.createElement("h2");
     h2.innerText = `${meal.data.attributes.name}`;
+    
 
     let h3 = document.createElement("h3")
     h3.innerText = `${meal.data.attributes.ingredients}`;
@@ -178,18 +178,31 @@ function createNewMeal(meal){
     list.append(h2, h3, p);
     mealDiv.appendChild(list);
 
-    // let dinner = 2
-    // let categoryId = `${meal.data.attributes.category_id}`;
-    // let mealInsert = document.getElementsByClassName("category-meals");
+    // let mealInsert = document.getElementsByClassName("square");
+        // let breakfast = mealInsert[0].innerText.split(":")[0]
+
+        // let breakfast = mealInsert[0]
+        // let string = breakfast.textContent.match(/[A-Z][a-z]+/g)
+// 
     // for(let i = 0; i > mealInsert; i++){
-        // if(mealInsert[i].id === 2){
-        //     console.log("maybe")
+    //     let name = mealInsert[i].innerText.split(":")
+        // if( `${meal.data.attributes.name}`.value === "Lunch"){
+            // console.log(p.innerText)
         // }
-        if(p.innerText === "Drinks"){
-            console.log("This is a drink")
-        } else {
-            console.log("This is not a drink")
+
+        let divSquares = document.querySelectorAll("div.square")
+        for(let i = 0; i > 5; i++){
+            let string = divSquares[i].innerText.match(/[A-Z][a-z]+/g)[0]
+            if(string === p.innerText){
+                console.log("works")
+            } 
+            console.log("no")
         }
+       // Once this is submitted, I may want to start another function. One that pulls the name innerText from the new element and then finds the correct square to put it in. 
+
+
+        
+        
     // }
 
     document.getElementById('input-name').value="";
