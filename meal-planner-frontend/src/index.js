@@ -167,7 +167,6 @@ function createNewMeal(meal){
 
     let h2 = document.createElement("h2");
     h2.innerText = `${meal.data.attributes.name}`;
-    
 
     let h3 = document.createElement("h3")
     h3.innerText = `${meal.data.attributes.ingredients}`;
@@ -178,11 +177,9 @@ function createNewMeal(meal){
     list.append(h2, h3, p);
     mealDiv.appendChild(list);
 
-    // appendMealToCategory(meal)
     let categoryP = document.createElement("p");
     categoryP.classList = "category-meals";
     categoryP.id = `${meal.data.attributes.category_id}`;
-    // categoryP.style.visibility = "hidden";
 
     let h4 = document.createElement("h4");
     h4.innerText = `${meal.data.attributes.name}`;
@@ -193,8 +190,7 @@ function createNewMeal(meal){
     categoryP.append(h4, li);
 
     let divSquares = document.querySelectorAll("div.square");
-    // for(let i = 0; i > 5; i++){
-    // let string = divSquares[i].innerText.match(/[A-Z][a-z]+/g)[0]
+
     let breakfast = divSquares[0];
     let lunch = divSquares[1];
     let dinner = divSquares[2];
@@ -219,61 +215,6 @@ function createNewMeal(meal){
     document.getElementById('input-category').value="";
 }
 
-// function appendMealToCategory(meal){
-//     let categoryP = document.createElement("p");
-//     categoryP.classList = "category-meals";
-//     categoryP.id = `${meal.data.attributes.category_id}`;
-//     // categoryP.style.visibility = "hidden";
-
-//     let h4 = document.createElement("h4");
-//     h4.innerText = `${meal.data.attributes.name}`;
-
-//     let li = document.createElement("li");
-//     li.innerText = `${meal.data.attributes.ingredients}`;
-
-//     categoryP.append(h4, li);
-
-//     let divSquares = document.querySelectorAll("div.square");
-//     // for(let i = 0; i > 5; i++){
-//     // let string = divSquares[i].innerText.match(/[A-Z][a-z]+/g)[0]
-//     let breakfast = divSquares[0];
-//     let lunch = divSquares[1];
-//     let dinner = divSquares[2];
-//     let snacks = divSquares[3];
-//     let drinks = divSquares[4];
-
-//     if(p.innerText === "Breakfast"){
-//         breakfast.append(categoryP)
-//     } else if(p.innerText === "Lunch"){
-//         lunch.append(categoryP)
-//     } else if(p.innerText === "Dinner"){
-//         dinner.append(categoryP)
-//     } else if(p.innerText === "Snacks"){
-//         snacks.append(categoryP)
-//     } else {
-//         drinks.append(categoryP)
-//     }
-        
-//     // }
-    
-
-//     // let mealInsert = document.getElementsByClassName("square");
-//         // let breakfast = mealInsert[0].innerText.split(":")[0]
-
-//         // let breakfast = mealInsert[0]
-//         // let string = breakfast.textContent.match(/[A-Z][a-z]+/g)
-// // 
-//     // for(let i = 0; i > mealInsert; i++){
-//     //     let name = mealInsert[i].innerText.split(":")
-//         // if( `${meal.data.attributes.name}`.value === "Lunch"){
-//             // console.log(p.innerText)
-//         // }
-
-       
-//      // create the elements then do a if statement and append to a certain div square element based on category
 
 
-        
-        
-//     // }
-// }
+
