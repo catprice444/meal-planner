@@ -64,14 +64,15 @@ function getCategories(){
             let h2 = document.createElement("h2");
             h2.innerText = `${cat.attributes.name}:`;
 
-            let button = document.createElement("button");
-            button.innerText = "View Meals";
-            button.setAttribute("data-category-id", `${cat.id}`);
+            let viewMeals = document.createElement("button");
+            viewMeals.innerText = "View Meals";
+            viewMeals.setAttribute("data-category-id", `${cat.id}`);
             
             let section = document.createElement("div")
+            section.setAttribute("id", `${cat.id}`)
             section.style.visibility = "hidden";
 
-            square.append(h2, button, section);
+            square.append(h2, viewMeals, section);
             categoryDiv.appendChild(square);
 
             cat.attributes.meals.forEach(meal => {
@@ -88,16 +89,16 @@ function getCategories(){
 
                 mealsInCategory.append(mealNameInCategory, mealIngredientsInCategory);
                 section.append(mealsInCategory);
-
-                button.addEventListener("click", () => {
-                    if(section.style.visibility === "hidden"){
-                        section.style.visibility = "visible";
-
-                    } else {
-                        section.style.visibility = "hidden";
-                    }
-                });
             })
+
+            viewMeals.addEventListener("click", () => {
+                if(section.style.visibility === "hidden"){
+                    section.style.visibility = "visible";
+
+                } else {
+                    section.style.visibility = "hidden";
+                }
+            });
         })
     })
 }
@@ -152,9 +153,15 @@ function createMealButton(){
 function addMeal(event){ 
     event.preventDefault();
 
-    const inputName = document.querySelector("#input-name").value;
+    const inputName = capitilize(document.querySelector("#input-name").value);
     const inputIngredients = document.querySelector("#input-ingredients").value;
     const inputCategory = parseInt(document.querySelector("#input-category").value);
+
+    if(inputName === "" || inputIngredients === "" || inputCategory === "" ){
+        event.preventDefault();
+        alert("Please fill in all the fields")
+        return false;
+    }
 
     submitForm(inputName, inputIngredients, inputCategory);
 
@@ -240,6 +247,6 @@ function createNewMeal(meal){
     };
 }
 
-
-
-
+function capitilize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
