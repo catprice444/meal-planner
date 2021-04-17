@@ -50,7 +50,7 @@ function getCategories(){
     .then(categories => {
 
         categories.data.map(cat =>{
-            const square = document.createElement("div");
+            let square = document.createElement("div");
             square.classList.add("square");
             square.setAttribute("id", `${cat.id}`);
             
@@ -61,79 +61,35 @@ function getCategories(){
             button.innerText = "View Meals";
             button.setAttribute("data-category-id", `${cat.id}`);
             
+
             square.append(h2, button);
             categoryDiv.appendChild(square);
 
             cat.attributes.meals.forEach(meal => {
-                appendMealsToCategory(meal)
-                // let mealsInCategory = document.createElement("p");
-                // mealsInCategory.classList = "category-meals";
-                // mealsInCategory.id = `${meal.category_id}`;
-                // mealsInCategory.style.visibility = "hidden";
+                let mealsInCategory = document.createElement("p");
+                mealsInCategory.classList = "category-meals";
+                mealsInCategory.id = `${meal.category_id}`;
+                mealsInCategory.style.visibility = "hidden";
             
-                // let mealNameInCategory = document.createElement("h4");
-                // mealNameInCategory.innerText = `${meal.name}`;
+                let mealNameInCategory = document.createElement("h4");
+                mealNameInCategory.innerText = `${meal.name}`;
 
-                // let mealIngredientsInCategory = document.createElement("li");
-                // mealIngredientsInCategory.innerText = `${meal.ingredients}`;
+                let mealIngredientsInCategory = document.createElement("li");
+                mealIngredientsInCategory.innerText = `${meal.ingredients}`;
 
-                // mealsInCategory.append(mealNameInCategory, mealIngredientsInCategory);
-                // square.append(meal)
+                mealsInCategory.append(mealNameInCategory, mealIngredientsInCategory);
+                square.append(mealsInCategory)
 
                 button.addEventListener("click", () => {
-                    if(meal.style.visibility === "hidden"){
-                        meal.style.visibility = "visible"
+                    if(mealsInCategory.style.visibility === "hidden"){
+                        mealsInCategory.style.visibility = "visible"
                     } else {
-                        meal.style.visibility = "hidden"
+                        mealsInCategory.style.visibility = "hidden"
                     }
                 });
             })
         })
     })
-}
-
-function appendMealsToCategory(meal){
-    let mealsInCategory = document.createElement("p");
-    mealsInCategory.classList = "category-meals";
-    mealsInCategory.id = `${meal.category_id}`;
-    mealsInCategory.style.visibility = "hidden";
-
-    let mealNameInCategory = document.createElement("h4");
-    mealNameInCategory.innerText = `${meal.name}`;
-
-    let mealIngredientsInCategory = document.createElement("li");
-    mealIngredientsInCategory.innerText = `${meal.ingredients}`;
-
-    mealsInCategory.append(mealNameInCategory, mealIngredientsInCategory);
-
-    // square.append(mealsInCategory)
-    let divSquares = document.querySelectorAll("div.square");
-
-    let breakfast = divSquares[0];
-    let lunch = divSquares[1];
-    let dinner = divSquares[2];
-    let snacks = divSquares[3];
-    let drinks = divSquares[4];
-
-    if(mealsInCategory.id === 1){
-        breakfast.append(mealsInCategory)
-    } else if(mealsInCategory.id === 2){
-        lunch.append(mealsInCategory)
-    } else if(mealsInCategory.id === 3){
-        dinner.append(mealsInCategory)
-    } else if(mealsInCategory.id === 4){
-        snacks.append(mealsInCategory)
-    } else if (mealsInCategory.id === 5){
-        drinks.append(mealsInCategory)
-    }
-
-    // button.addEventListener("click", () => {
-    //     if(mealsInCategory.style.visibility === "hidden"){
-    //         mealsInCategory.style.visibility = "visible"
-    //     } else {
-    //         mealsInCategory.style.visibility = "hidden"
-    //     }
-    // });
 }
 
 function getMeals(){
@@ -221,38 +177,38 @@ function createNewMeal(meal){
     list.append(h2, h3, p);
     mealDiv.appendChild(list);
 
-    // let categoryP = document.createElement("p");
-    // categoryP.classList = "category-meals";
-    // categoryP.id = `${meal.data.attributes.category_id}`;
-    // categoryP.style.visibility = "hidden";
+    let categoryP = document.createElement("p");
+    categoryP.classList = "category-meals";
+    categoryP.id = `${meal.data.attributes.category_id}`;
+    categoryP.style.visibility = "hidden";
 
-    // let h4 = document.createElement("h4");
-    // h4.innerText = `${meal.data.attributes.name}`;
+    let h4 = document.createElement("h4");
+    h4.innerText = `${meal.data.attributes.name}`;
 
-    // let li = document.createElement("li");
-    // li.innerText = `${meal.data.attributes.ingredients}`;
+    let li = document.createElement("li");
+    li.innerText = `${meal.data.attributes.ingredients}`;
 
-    // categoryP.append(h4, li);
+    categoryP.append(h4, li);
 
-    // let divSquares = document.querySelectorAll("div.square");
+    let divSquares = document.querySelectorAll("div.square");
 
-    // let breakfast = divSquares[0];
-    // let lunch = divSquares[1];
-    // let dinner = divSquares[2];
-    // let snacks = divSquares[3];
-    // let drinks = divSquares[4];
+    let breakfast = divSquares[0];
+    let lunch = divSquares[1];
+    let dinner = divSquares[2];
+    let snacks = divSquares[3];
+    let drinks = divSquares[4];
 
-    // if(p.innerText === "Breakfast"){
-    //     breakfast.append(categoryP)
-    // } else if(p.innerText === "Lunch"){
-    //     lunch.append(categoryP)
-    // } else if(p.innerText === "Dinner"){
-    //     dinner.append(categoryP)
-    // } else if(p.innerText === "Snacks"){
-    //     snacks.append(categoryP)
-    // } else {
-    //     drinks.append(categoryP)
-    // }
+    if(p.innerText === "Breakfast"){
+        breakfast.append(categoryP)
+    } else if(p.innerText === "Lunch"){
+        lunch.append(categoryP)
+    } else if(p.innerText === "Dinner"){
+        dinner.append(categoryP)
+    } else if(p.innerText === "Snacks"){
+        snacks.append(categoryP)
+    } else {
+        drinks.append(categoryP)
+    }
     
 
     document.getElementById('input-name').value="";
