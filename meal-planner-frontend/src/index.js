@@ -185,7 +185,6 @@ function createNewMeal(meal){
     let categoryP = document.createElement("p");
     categoryP.classList = "category-meals";
     categoryP.id = `${meal.data.attributes.category_id}`;
-    categoryP.style.visibility = "hidden";
 
     let h4 = document.createElement("h4");
     h4.innerText = `${meal.data.attributes.name}`;
@@ -204,34 +203,25 @@ function createNewMeal(meal){
     let drinks = divSquares[4];
 
     if(p.innerText === "Breakfast"){
-        breakfast.appendChild(categoryP);
-            // if(breakfast.children[2].style.visibility === "visible"){
-            //     categoryP.style.visibility = "visible";
-            // }
+        let b = breakfast.children[2];
+        b.append(categoryP);
 
     } else if(p.innerText === "Lunch"){
-        lunch.appendChild(categoryP);
-        // if (lunch.children[2].style.visibility === "visible"){
-        //     categoryP.style.visibility = "visible";
-        // }
+        let l = lunch.children[2];
+        l.append(categoryP);
 
     } else if(p.innerText === "Dinner"){
-        dinner.appendChild(categoryP);
-        // if(dinner.children[2].style.visibility === "visible"){
-        //     categoryP.style.visibility = "visible";
-        // }
+        let d = dinner.children[2];
+        d.append(categoryP);
 
     } else if(p.innerText === "Snacks"){
-        snacks.appendChild(categoryP);
-        // if(snacks.children[2].style.visibility === "visible"){
-        //     categoryP.style.visibility = "visible";
-        // }
+        let s = snacks.children[2];
+        s.append(categoryP);
 
     } else {
-        drinks.appendChild(categoryP);
-        // if(drinks.children[2].style.visibility === "visible"){
-        //     categoryP.style.visibility = "visible";
-        // }
+        let d = drinks.children[2];
+        d.append(categoryP);
+
     }
     
 
