@@ -61,15 +61,17 @@ function getCategories(){
             button.innerText = "View Meals";
             button.setAttribute("data-category-id", `${cat.id}`);
             
+            let section = document.createElement("div")
+            section.style.visibility = "hidden";
 
-            square.append(h2, button);
+            square.append(h2, button, section);
             categoryDiv.appendChild(square);
 
             cat.attributes.meals.forEach(meal => {
+                
                 let mealsInCategory = document.createElement("p");
                 mealsInCategory.classList = "category-meals";
                 mealsInCategory.id = `${meal.category_id}`;
-                mealsInCategory.style.visibility = "hidden";
             
                 let mealNameInCategory = document.createElement("h4");
                 mealNameInCategory.innerText = `${meal.name}`;
@@ -78,13 +80,13 @@ function getCategories(){
                 mealIngredientsInCategory.innerText = `${meal.ingredients}`;
 
                 mealsInCategory.append(mealNameInCategory, mealIngredientsInCategory);
-                square.append(mealsInCategory)
+                section.append(mealsInCategory)
 
                 button.addEventListener("click", () => {
-                    if(mealsInCategory.style.visibility === "hidden"){
-                        mealsInCategory.style.visibility = "visible"
+                    if(section.style.visibility === "hidden"){
+                        section.style.visibility = "visible"
                     } else {
-                        mealsInCategory.style.visibility = "hidden"
+                        section.style.visibility = "hidden"
                     }
                 });
             })
@@ -141,6 +143,9 @@ function addMeal(event){
     const inputIngredients = document.querySelector("#input-ingredients").value
     const inputCategory = parseInt(document.querySelector("#input-category").value)
     submitForm(inputName, inputIngredients, inputCategory)
+    document.getElementById('input-name').value="";
+    document.getElementById('input-ingredients').value="";
+    document.getElementById('input-category').value="";
 }
 
 function submitForm(inputName, inputIngredients, inputCategory){
@@ -199,21 +204,38 @@ function createNewMeal(meal){
     let drinks = divSquares[4];
 
     if(p.innerText === "Breakfast"){
-        breakfast.append(categoryP)
+        breakfast.appendChild(categoryP);
+            // if(breakfast.children[2].style.visibility === "visible"){
+            //     categoryP.style.visibility = "visible";
+            // }
+
     } else if(p.innerText === "Lunch"){
-        lunch.append(categoryP)
+        lunch.appendChild(categoryP);
+        // if (lunch.children[2].style.visibility === "visible"){
+        //     categoryP.style.visibility = "visible";
+        // }
+
     } else if(p.innerText === "Dinner"){
-        dinner.append(categoryP)
+        dinner.appendChild(categoryP);
+        // if(dinner.children[2].style.visibility === "visible"){
+        //     categoryP.style.visibility = "visible";
+        // }
+
     } else if(p.innerText === "Snacks"){
-        snacks.append(categoryP)
+        snacks.appendChild(categoryP);
+        // if(snacks.children[2].style.visibility === "visible"){
+        //     categoryP.style.visibility = "visible";
+        // }
+
     } else {
-        drinks.append(categoryP)
+        drinks.appendChild(categoryP);
+        // if(drinks.children[2].style.visibility === "visible"){
+        //     categoryP.style.visibility = "visible";
+        // }
     }
     
 
-    document.getElementById('input-name').value="";
-    document.getElementById('input-ingredients').value="";
-    document.getElementById('input-category').value="";
+    
 }
 
 
