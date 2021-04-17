@@ -155,9 +155,10 @@ function addMeal(event){
 
     const inputName = titlecase(document.querySelector("#input-name").value);
     const inputIngredients = capitalize(document.querySelector("#input-ingredients").value);
+    const inputedCategoryValue = document.querySelector("#input-category").value
     const inputCategory = parseInt(document.querySelector("#input-category").value);
 
-    if(inputName === "" || inputIngredients === "" || inputCategory === "" ){
+    if(inputName === "" || inputIngredients === "" || inputedCategoryValue === "0" ){
         event.preventDefault();
         alert("Please fill in all the fields")
         return false;
@@ -167,7 +168,7 @@ function addMeal(event){
 
     document.getElementById('input-name').value="";
     document.getElementById('input-ingredients').value="";
-    document.getElementById('input-category').value="";
+    document.getElementById('input-category').value="0";
 }
 
 function submitForm(inputName, inputIngredients, inputCategory){
