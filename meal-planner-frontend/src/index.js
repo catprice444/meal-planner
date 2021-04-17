@@ -11,7 +11,7 @@ const buttonSection = document.querySelector("#button-section");
 
 document.addEventListener('DOMContentLoaded', ()=>{
     getCategories();
-    categoryDiv.style.display = "none";
+    categoryDiv.style.visibility = "hidden";
 
     getMeals();
     mealDiv.style.display = "none";
@@ -35,15 +35,15 @@ function viewButtons(){
             mealDiv.style.display = "none";
         } 
 
-        categoryDiv.style.display = "none";
+        categoryDiv.style.visibility = "hidden";
     })
 
     categoryView.addEventListener("click", () => {
-        if(categoryDiv.style.display === "none"){
-            categoryDiv.style.display = "grid";
+        if(categoryDiv.style.visibility === "hidden"){
+            categoryDiv.style.visibility = "visible";
 
         } else{
-            categoryDiv.style.display = "none";
+            categoryDiv.style.visibility = "hidden";
         } 
 
         mealDiv.style.display = "none";

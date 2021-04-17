@@ -48,8 +48,8 @@ button:hover {
   }
 
 #category-view {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    style: float-container;
+    /* grid-template-columns: 1fr 1fr; */
     grid-gap: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
