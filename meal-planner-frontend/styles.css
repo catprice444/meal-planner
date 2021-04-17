@@ -48,19 +48,22 @@ button:hover {
   }
 
 #category-view {
-    style: float-container;
+    /* style: float-container; */
     /* grid-template-columns: 1fr 1fr; */
     grid-gap: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
+    margin: auto;
+    align-items: center;
 }
 
 div.square {
     background-color: #E8CEBF;
     height: auto;
-    width: auto;
+    width: 230px;
     padding: 10px;
     border-radius: 50px;
+    float: left;
     
 }
 
