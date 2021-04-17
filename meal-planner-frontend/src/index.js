@@ -153,8 +153,8 @@ function createMealButton(){
 function addMeal(event){ 
     event.preventDefault();
 
-    const inputName = capitilize(document.querySelector("#input-name").value);
-    const inputIngredients = document.querySelector("#input-ingredients").value;
+    const inputName = titlecase(document.querySelector("#input-name").value);
+    const inputIngredients = capitalize(document.querySelector("#input-ingredients").value);
     const inputCategory = parseInt(document.querySelector("#input-category").value);
 
     if(inputName === "" || inputIngredients === "" || inputCategory === "" ){
@@ -247,6 +247,19 @@ function createNewMeal(meal){
     };
 }
 
-function capitilize(str){
-    return str.charAt(0).toUpperCase() + str.slice(1);
+function titlecase(str){
+    let s = str.toLowerCase().split(" ");
+    for(let i = 0; i < s.length; i++){
+        s[i] = s[i].charAt(0).toUpperCase() + s[i].substring(1);
+    }
+    return s.join(" "); 
 }
+
+function capitalize(array){
+    let a = array.toLowerCase().split(" ");
+    for(let i = 0; i < a.length; i++){
+        a[i] = a[i].charAt(0).toUpperCase() + a[i].substring(1);
+    }
+    return a.join(" ");
+}
+ 
