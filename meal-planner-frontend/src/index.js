@@ -7,6 +7,7 @@ const newMeal = document.querySelector("#create-meals-form");
 const mealView = document.querySelector("#meal-list");
 const categoryView = document.querySelector("#category-list");
 const buttonSection = document.querySelector("#button-section");
+const mealViewInCat = document.getElementsByClassName("meals-in-category")
 
 document.addEventListener('DOMContentLoaded', ()=>{
     getCategories();
@@ -31,6 +32,9 @@ function viewButtons(){
             mealDiv.style.display = "grid";
         } else {
             mealDiv.style.display = "none";
+            for(let i = 0; i < mealViewInCat.length; i++){
+                mealViewInCat[i].style.visibility = "hidden";
+            }
         } 
         categoryDiv.style.visibility = "hidden";
     })
@@ -40,7 +44,6 @@ function viewButtons(){
             categoryDiv.style.visibility = "visible";
         } else{
             categoryDiv.style.visibility = "hidden";
-            let mealViewInCat = document.getElementsByClassName("meals-in-category")
             for(let i = 0; i < mealViewInCat.length; i++){
                 mealViewInCat[i].style.visibility = "hidden";
             }
