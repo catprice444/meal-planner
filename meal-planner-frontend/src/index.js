@@ -109,24 +109,8 @@ function getMeals(){
     .then(meals => {
         
         meals.data.map(meal => {
-            // let list = document.createElement("div");
-            // list.classList.add("list");
-            // list.setAttribute("id", `${meal.id}`);
-
-            // let h2 = document.createElement("h2");
-            // h2.innerText = `${meal.attributes.name}`;
-
-            // let h3 = document.createElement("h3");
-            // h3.innerText = `${meal.attributes.ingredients}`;
-             
-            // let p = document.createElement("p");
-            // p.innerText = `${meal.attributes.category.name}`;
-
-            // list.append(h2, h3, p);
-            // mealDiv.append(list);
             let newMeal = new Meal(meal, meal.attributes);
             mealDiv.innerHTML += newMeal.renderMeals();
-        
         })
     })
 }
@@ -188,26 +172,15 @@ function submitForm(inputName, inputIngredients, inputCategory){
     })
 
     .then(result => result.json())
-    .then(meal => createNewMeal(meal))
+    .then(meal => {
+        const mealData = meal.data
+        let newMeal = new Meal(mealData, mealData.attributes)
+        mealDiv.innerHTML += newMeal.renderMeals();
+        appendMealToCategory(meal)
+    })
 }
 
-function createNewMeal(meal){
-    let list = document.createElement("div");
-    list.classList.add("list");
-    list.setAttribute("id", `${meal.id}`);
-
-    let h2 = document.createElement("h2");
-    h2.innerText = `${meal.data.attributes.name}`;
-
-    let h3 = document.createElement("h3");
-    h3.innerText = `${meal.data.attributes.ingredients}`;
-             
-    let p = document.createElement("p");
-    p.innerText = `${meal.data.attributes.category.name}`;
-
-    list.append(h2, h3, p);
-    mealDiv.appendChild(list);
-
+function appendMealToCategory(meal){
     let categoryP = document.createElement("p");
     categoryP.classList = "category-meals";
     categoryP.id = `${meal.data.attributes.category_id}`;
@@ -228,19 +201,19 @@ function createNewMeal(meal){
     let snacks = divSquares[3];
     let drinks = divSquares[4];
 
-    if(p.innerText === "Breakfast"){
+    if(`${meal.data.attributes.category.name}` === "Breakfast"){
         let b = breakfast.children[2];
         b.append(categoryP);
 
-    } else if(p.innerText === "Lunch"){
+    } else if(`${meal.data.attributes.category.name}` === "Lunch"){
         let l = lunch.children[2];
         l.append(categoryP);
 
-    } else if(p.innerText === "Dinner"){
+    } else if(`${meal.data.attributes.category.name}` === "Dinner"){
         let d = dinner.children[2];
         d.append(categoryP);
 
-    } else if(p.innerText === "Snacks"){
+    } else if(`${meal.data.attributes.category.name}` === "Snacks"){
         let s = snacks.children[2];
         s.append(categoryP);
 
