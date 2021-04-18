@@ -8,7 +8,6 @@ const mealView = document.querySelector("#meal-list");
 const categoryView = document.querySelector("#category-list");
 const buttonSection = document.querySelector("#button-section");
 
-
 document.addEventListener('DOMContentLoaded', ()=>{
     getCategories();
     categoryDiv.style.visibility = "hidden";
@@ -41,6 +40,10 @@ function viewButtons(){
             categoryDiv.style.visibility = "visible";
         } else{
             categoryDiv.style.visibility = "hidden";
+            let mealViewInCat = document.getElementsByClassName("meals-in-category")
+            for(let i = 0; i < mealViewInCat.length; i++){
+                mealViewInCat[i].style.visibility = "hidden";
+            }
         } 
         mealDiv.style.display = "none";
     })
@@ -51,7 +54,7 @@ function getCategories(){
     .then(result => result.json())
     .then(categories => {
 
-        categories.data.map(category =>{
+        categories.data.map(cat =>{
 
             let square = document.createElement("div");
             square.classList.add("square");
@@ -66,12 +69,13 @@ function getCategories(){
             
             let section = document.createElement("div")
             section.setAttribute("id", `${cat.id}`)
+            section.className = "meals-in-category";
             section.style.visibility = "hidden";
 
             square.append(h2, viewMeals, section);
             categoryDiv.appendChild(square);
 
-            category.attributes.meals.forEach(meal => {
+            cat.attributes.meals.forEach(meal => {
                 
                 let mealsInCategory = document.createElement("p");
                 mealsInCategory.classList = "category-meals";

@@ -1,4 +1,5 @@
 class Meal {
+    
     constructor(meal, mealAttributes){
         this.id = meal.id;
         this.name = mealAttributes.name;
