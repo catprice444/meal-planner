@@ -1,9 +1,9 @@
 class Meal {
     constructor(meal, mealAttributes){
-        this.id = meal.id
-        this.name = mealAttributes.name 
-        this.ingredients = mealAttributes.ingredients
-        this.category = mealAttributes.category
+        this.id = meal.id;
+        this.name = mealAttributes.name;
+        this.ingredients = mealAttributes.ingredients;
+        this.category = mealAttributes.category;
         Meal.all.push(this);
     }  
 
