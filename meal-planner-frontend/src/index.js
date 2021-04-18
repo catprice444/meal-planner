@@ -51,7 +51,7 @@ function getCategories(){
     .then(result => result.json())
     .then(categories => {
 
-        categories.data.map(cat =>{
+        categories.data.map(category =>{
 
             let square = document.createElement("div");
             square.classList.add("square");
@@ -71,7 +71,7 @@ function getCategories(){
             square.append(h2, viewMeals, section);
             categoryDiv.appendChild(square);
 
-            cat.attributes.meals.forEach(meal => {
+            category.attributes.meals.forEach(meal => {
                 
                 let mealsInCategory = document.createElement("p");
                 mealsInCategory.classList = "category-meals";
