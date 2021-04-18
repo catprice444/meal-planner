@@ -30,22 +30,18 @@ function viewButtons(){
     mealView.addEventListener("click", () => {
         if(mealDiv.style.display === "none"){
             mealDiv.style.display = "grid";
-
         } else {
             mealDiv.style.display = "none";
         } 
-
         categoryDiv.style.visibility = "hidden";
     })
 
     categoryView.addEventListener("click", () => {
         if(categoryDiv.style.visibility === "hidden"){
             categoryDiv.style.visibility = "visible";
-
         } else{
             categoryDiv.style.visibility = "hidden";
         } 
-
         mealDiv.style.display = "none";
     })
 }
@@ -94,7 +90,6 @@ function getCategories(){
             viewMeals.addEventListener("click", () => {
                 if(section.style.visibility === "hidden"){
                     section.style.visibility = "visible";
-
                 } else {
                     section.style.visibility = "hidden";
                 }
@@ -126,7 +121,6 @@ function createMealButton(){
         if (form.style.visibility === "hidden"){
             form.style.visibility = "visible";
             button.innerText = "Close Form";
-
         } else { 
             form.style.visibility = "hidden";
             button.innerText = "Add a New Meal!";
