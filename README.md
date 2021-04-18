@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Meal Planner App
 
-Things you may want to cover:
+## Welcome to my Javascript app!
 
-* Ruby version
+Here a user can create their own meal planner! A user is able to create new meals and add them to categories. The single page app allows you to toggle between views and also show/ close the form to add a new meal to the page. 
 
-* System dependencies
+Once you add a new meal it will automatically be added to the appropriate category on the view page and it will create its own square on the meal view page. 
 
-* Configuration
+## Install Instructions
 
-* Database creation
+To begin using this app, clone the repo, run `bundle install`, `rake db:migrate`, and then run `shotgun`.
 
-* Database initialization
+## Contributors Guide
 
-* How to run the test suite
+Bug reports and pull requests are welcome on GitHub at https://github.com/catprice444/days-worked-sinatra-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://contributor-covenant.org/) code of conduct.
 
-* Services (job queues, cache servers, search engines, etc.)
+## License 
 
-* Deployment instructions
-
-* ...
+The project is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
