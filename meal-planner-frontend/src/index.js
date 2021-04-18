@@ -109,21 +109,23 @@ function getMeals(){
     .then(meals => {
         
         meals.data.map(meal => {
-            let list = document.createElement("div");
-            list.classList.add("list");
-            list.setAttribute("id", `${meal.id}`);
+            // let list = document.createElement("div");
+            // list.classList.add("list");
+            // list.setAttribute("id", `${meal.id}`);
 
-            let h2 = document.createElement("h2");
-            h2.innerText = `${meal.attributes.name}`;
+            // let h2 = document.createElement("h2");
+            // h2.innerText = `${meal.attributes.name}`;
 
-            let h3 = document.createElement("h3");
-            h3.innerText = `${meal.attributes.ingredients}`;
+            // let h3 = document.createElement("h3");
+            // h3.innerText = `${meal.attributes.ingredients}`;
              
-            let p = document.createElement("p");
-            p.innerText = `${meal.attributes.category.name}`;
+            // let p = document.createElement("p");
+            // p.innerText = `${meal.attributes.category.name}`;
 
-            list.append(h2, h3, p);
-            mealDiv.appendChild(list);
+            // list.append(h2, h3, p);
+            // mealDiv.append(list);
+            let newMeal = new Meal(meal, meal.attributes);
+            mealDiv.innerHTML += newMeal.renderMeals();
         
         })
     })
